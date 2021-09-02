@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "app.css" %}"> {% comment %}css aplikacji{% endcomment %}
+{% block css_files %}{% endblock %}
+</head>
+<body>
+
+    <header id="main-navigation">
+{#        tu będzie menu#}
+    </header>
+
+    {% block content %}{% endblock %}
+</body>
+</html>
