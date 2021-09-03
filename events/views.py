@@ -8,7 +8,7 @@ def index(request):
 
 def events(request):
 
-    return render((request, "events/all_events.html"))
+    return render(request, "events/all_events.html")
 
 def event(request, slug):
 
