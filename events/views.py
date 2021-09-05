@@ -64,5 +64,8 @@ def events(request):
 
 
 def event_detail(request, slug):
+    identfied_event = next(event for event in all_events if event['slug'] == slug)
+    return render(request, "events/event_detail.html", {
+        "event": identfied_event
+    })
 
-    return render(request, "events/event.html")
