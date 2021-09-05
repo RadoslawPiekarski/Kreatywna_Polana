@@ -47,9 +47,14 @@ all_events = [
 ]
 
 
-def index(request):
+def get_date(event):
+    return event['date']
 
-    return render(request, "events/index.html")
+
+def index(request):
+    sorted_events = sorted(all_events, key=get_date)
+    latest_events = sorted_events[-3:]
+    return render(request, "events/index.html", {"events": latest_events})
 
 
 def events(request):
@@ -59,6 +64,6 @@ def events(request):
 # single event page
 
 
-def event(request, slug):
+def event_detail(request, slug):
 
     return render(request, "events/event.html")
