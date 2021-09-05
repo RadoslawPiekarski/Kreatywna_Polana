@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{%  extends "base.html" %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block css_files %}
+{#    <link rel="stylesheet" href="{% static "events/event.css" %}">#}
+{#    <link rel="stylesheet" href="{% static "events/all_events.css" %}">#}
+{% endblock %}
+
+{% block content %}
+
+    <section id="all-events">
+        <h2>All incoming events:</h2>
+
+        <ul>
+
+            {% for event in all_events %}
+                {% include "events/includes/event.html" %}
+            {% endfor %}
+
+
+        </ul>
+
+    </section>
+{% endblock %}
