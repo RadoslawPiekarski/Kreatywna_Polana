@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% block css_files %}
+{#    <link rel="stylesheet" href="{% static "events/post.css" %}">#}
+{#    <link rel="stylesheet" href="{% static "events/index.css" %}">#}
+{% endblock %}
+
+{% block content %}
+
+
+    <section id="welcome">
+        <header>
+
+        </header>
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna.  Praesent convallis tempor mauris ac eleifend. Donec porta eros lacus, at laoreet mauris rutrum eu. Mauris ac nulla quis augue dapibus varius. </p>
+    </section>
+
+    <section id="about">
+        <h2>O kreatywnej polanie</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in. Sed vulputate, orci id varius rutrum, eros nunc mollis nunc, vitae ornare sem orci sed nisi. Sed venenatis leo augue. Phasellus ullamcorper quam nec magna varius, eget porta magna pretium. Cras mollis odio non ligula condimentum malesuada. Sed volutpat non mi sed convallis. Donec ex nisi, condimentum vitae pharetra a, tempus ut risus. Praesent convallis tempor mauris ac eleifend. Donec porta eros lacus, at laoreet mauris rutrum eu. Mauris ac nulla quis augue dapibus varius. </p>
+        <p>Ut sit amet lectus ac felis efficitur suscipit. Morbi porta justo augue, vitae sagittis lectus eleifend hendrerit. Vestibulum id eleifend augue. Quisque posuere augue et libero pharetra cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In a arcu condimentum, tempor ipsum vitae, ornare nisi. Phasellus vulputate leo at ullamcorper dictum. </p>
+    </section>
+
+    <section id="next-events">
+        <h2>Najbliższe zajęcia:</h2>
+        <ul>
+            {% for event in events %}
+                {% include "events/includes/event.html" %}
+            {% endfor %}
+        </ul>
+    </section>
+
+
+{% endblock %}
