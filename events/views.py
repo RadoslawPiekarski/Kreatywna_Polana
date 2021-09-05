@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from datetime import date
+from datetime import date, time
 
 # Create your views here.
 
@@ -8,8 +8,9 @@ all_events = [
     {
         "slug": "kreatywne-zabawy",
         "image": "image1.jpg",
-        "author": "Radek",
+        "host": "Monika",
         "date": date(2021, 8, 29),
+        "time": time(14, 00),
         "place": "Olszak",
         "group": "Misie",
         "title": "Kreatywne Zabawy",
@@ -20,8 +21,9 @@ all_events = [
     {
         "slug": "tor-przeszkod",
         "image": "image2.jpg",
-        "author": "Radek",
+        "host": "Radek",
         "date": date(2023, 8, 31),
+        "time": time(16, 30),
         "place": "Osiedle Przemysława",
         "group": "Skrzaty",
         "title": "Tor przeszkód",
@@ -32,8 +34,9 @@ all_events = [
     {
         "slug": "kreatywne-zabawy",
         "image": "image1.jpg",
-        "author": "Radek",
+        "host": "Monika",
         "date": date(2021, 8, 29),
+        "time": time(11, 00),
         "place": "Olszak",
         "group": "Skrzaty",
         "title": "Kreatywne Zabawy",
