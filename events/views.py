@@ -14,8 +14,8 @@ all_events = [
         "place": "Olszak",
         "group": "Misie",
         "title": "Kreatywne Zabawy",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in.",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in. Sed vulputate, orci id varius rutrum, eros nunc mollis nunc, vitae ornare sem orci sed nisi.",
+        "excerpt": "Tu jest zajawka. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in.",
+        "content": "Tu jest content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in. Sed vulputate, orci id varius rutrum, eros nunc mollis nunc, vitae ornare sem orci sed nisi.",
         "is_active": True,
     },
     {
@@ -65,7 +65,5 @@ def events(request):
 
 def event_detail(request, slug):
     identfied_event = next(event for event in all_events if event['slug'] == slug)
-    return render(request, "events/event_detail.html", {
-        "event": identfied_event
-    })
+    return render(request, "events/event_detail.html", {"event": identfied_event})
 
