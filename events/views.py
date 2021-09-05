@@ -7,7 +7,7 @@ from datetime import date, time
 all_events = [
     {
         "slug": "kreatywne-zabawy",
-        "image": "image1.jpg",
+        "image": "zajecia_sensoryczne.jpg",
         "host": "Monika",
         "date": date(2021, 8, 29),
         "time": time(14, 00),
@@ -20,7 +20,7 @@ all_events = [
     },
     {
         "slug": "tor-przeszkod",
-        "image": "image2.jpg",
+        "image": "zajecia_sensoryczne_2.jpg",
         "host": "Radek",
         "date": date(2023, 8, 31),
         "time": time(16, 30),
@@ -32,14 +32,14 @@ all_events = [
         "is_active": True,
     },
     {
-        "slug": "kreatywne-zabawy",
-        "image": "image1.jpg",
+        "slug": "zapach_jesieni",
+        "image": "zapach_jesieni.jpg",
         "host": "Monika",
         "date": date(2021, 8, 29),
         "time": time(11, 00),
         "place": "Olszak",
         "group": "Skrzaty",
-        "title": "Kreatywne Zabawy",
+        "title": "Zapach jesieni",
         "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in.",
         "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in. Sed vulputate, orci id varius rutrum, eros nunc mollis nunc, vitae ornare sem orci sed nisi.",
         "is_active": True,
