@@ -1,0 +1,13 @@
+{% load static %}
+
+<li>
+    <article class="event">
+        <a href="{% url "single-event" event.slug %}">
+            <img src="{% static "events/images/"|add:event.image %}" alt="{{ event.title }}">
+            <div class="event__content">
+                <h3>{{ event.title }}</h3>
+                <p> {{ event.excerpt }} </p>
+            </div>
+        </a>
+    </article>
+</li>
