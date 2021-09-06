@@ -13,7 +13,7 @@
     <section id="summary">
         <h2>{{ event.title }}</h2>
         <article>
-            <img src="{% static "events/images/"|add:event.image %}" alt="{{ event.title}}">
+            <img src="{% static "events/images/"|add:event.image %}" alt="{{ event.title}}" class="rounded float-end">
             <p>Dnia {{ event.date }}</p>
             <p>Godzina: {{ event.time }}</p>
             <p>Gdzie: {{ event.place }}</p>
