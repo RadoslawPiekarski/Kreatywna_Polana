@@ -30,11 +30,12 @@
 
     <section id="next-events">
         <h2>Najbliższe zajęcia:</h2>
-        <ul>
+        <div class="row row-cols-1 row-cols-md-5 g-5">
+
             {% for event in events %}
                 {% include "events/includes/event.html" %}
             {% endfor %}
-        </ul>
+        </div>
     </section>
 
 

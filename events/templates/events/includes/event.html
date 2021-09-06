@@ -1,13 +1,30 @@
 {% load static %}
 
-<li>
-    <article class="event">
-        <a href="{% url "single-event" event.slug %}">
-            <img src="{% static "events/images/"|add:event.image %}" alt="{{ event.title }}">
-            <div class="event__content">
-                <h3>{{ event.title }}</h3>
-                <p> {{ event.excerpt }} </p>
-            </div>
-        </a>
-    </article>
-</li>
+{#<li>#}
+{#    <article class="event">#}
+{#        <a href="{% url "single-event" event.slug %}">#}
+{#            <img src="{% static "events/images/"|add:event.image %}" alt="{{ event.title }}">#}
+{#            <div class="event__content">#}
+{#                <h3>{{ event.title }}</h3>#}
+{#                <p> {{ event.excerpt }} </p>#}
+{#            </div>#}
+{#        </a>#}
+{#    </article>#}
+{#</li>#}
+
+<div class="col">
+<div class="card" style="width: 18rem;">
+  <img src="{% static "events/images/"|add:event.image %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"> {{ event.title }}</h5>
+    <p class="card-text">
+        Dnia: <strong>{{ event.date }}</strong> <br>
+        Godzina: <strong>{{ event.time }}</strong> <br>
+        Gdzie: <strong>{{ event.place }}</strong> <br>
+        Grupa: <strong>{{ event.group }}</strong> <br>
+        Prowadzący zajęcia: <strong>{{ event.host }}</strong> <br>
+    </p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</div>
