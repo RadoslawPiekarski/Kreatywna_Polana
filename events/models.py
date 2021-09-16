@@ -16,6 +16,15 @@ class Place(models.Model):
     def __str__(self):
         return f"{self.name} {self.street} {self.street_number}"
 
+
+class Group(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+
 class Event(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
