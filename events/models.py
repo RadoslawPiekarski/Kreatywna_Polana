@@ -9,10 +9,12 @@ class Place(models.Model):
     image = models.CharField(max_length=50, null=True)
     place_map = models.CharField(max_length=400, null=True)
     street = models.CharField(max_length=50)
-    number = models.CharField(max_length=10)
+    street_number = models.CharField(max_length=10)
     district = models.CharField(max_length=50, default="Osiedle Przemysława")
     city = models.CharField(max_length=20, default="Poznań")
 
+    def __str__(self):
+        return f"{self.name} {self.street} {self.street_number}"
 
 class Event(models.Model):
     title = models.CharField(max_length=50)
