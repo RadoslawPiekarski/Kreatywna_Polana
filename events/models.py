@@ -23,11 +23,15 @@ class Event(models.Model):
     place = models.ForeignKey(Place, null=True, on_delete=models.SET_NULL)
     hosts = models.ManyToManyField(User)
     type = models.CharField(max_length=50)
+    group = models.ForeignKey(Group)
     image = models.CharField(max_length=100, null=True)
     excerpt = models.CharField(max_length=200)
     content = models.TextField
     discount_coupons = models.ForeignKey(Discount, null=True)
     is_active = models.BooleanField
+
+    def __str__(self):
+        return f"{self.title} {self.group} {self.date} {self.time}"
 
 
 
