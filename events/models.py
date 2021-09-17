@@ -61,3 +61,6 @@ class DiscountCoupons(models.Model):
     discount_high = models.IntegerField(max_length=3)
     start_date = models.DateField
     end_date = models.DateField
+
+    def __str__(self):
+        return f"{self.start_date} / {self.end_date} {self.discount_high}"
