@@ -44,6 +44,12 @@ class Event(models.Model):
     def __str__(self):
         return f"{self.title} {self.group} {self.date} {self.time}"
 
-
+class Payment(models.Model):
+    kid = models.ForeignKey(Kid, null=False, on_delete=models.SET_NULL)
+    event = models.ForeignKey(Event, on_delete=models.SET_NULL)
+    is_paid = models.BooleanField
+    date = models.DateField
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    coupon = models.ForeignKey(discount_coupon, null=True, on_delete=models.CASCADE)
 
 
