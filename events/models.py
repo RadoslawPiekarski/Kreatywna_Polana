@@ -55,3 +55,9 @@ class Payment(models.Model):
     def __str__(self):
         return f"{self.event} {self.kid} {self.price} {self.is_paid}
 
+class DiscountCoupons(models.Model):
+    event = models.ManyToManyField(Event)
+    coupon_code = models.CharField(max_length=20)
+    discount_high = models.IntegerField(max_length=3)
+    start_date = models.DateField
+    end_date = models.DateField
