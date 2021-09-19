@@ -57,7 +57,7 @@ class Kid(models.Model):
 
 class DiscountCoupons(models.Model):
     coupon_code = models.CharField(max_length=20)
-    discount_high = models.IntegerField(max_length=3)
+    discount_high = models.IntegerField
     start_date = models.DateField
     end_date = models.DateField
 
