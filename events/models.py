@@ -63,6 +63,6 @@ class Payment(models.Model):
     coupon = models.ForeignKey(DiscountCoupons, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.event} {self.kid} {self.price} {self.is_paid}
+        return f"{self.event} {self.kid} {self.price} {self.is_paid}"
 
 
