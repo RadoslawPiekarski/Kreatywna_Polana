@@ -75,7 +75,7 @@ class Event(models.Model):
     place = models.ForeignKey(Place, null=True, on_delete=models.SET_NULL)
     instructor = models.ManyToManyField(User)
     type = models.CharField(max_length=50)
-    group = models.ForeignKey(Group, on_delete=models.SET_NULL)
+    group = models.ForeignKey(Group, null=True, on_delete=models.SET_NULL)
     kids = models.ManyToManyField(Kid)
     excerpt = models.CharField(max_length=200)
     content = models.TextField
@@ -87,8 +87,8 @@ class Event(models.Model):
 
 
 class Payment(models.Model):
-    kid = models.ForeignKey(Kid, null=False, on_delete=models.SET_NULL)
-    event = models.ForeignKey(Event, on_delete=models.SET_NULL)
+    kid = models.ForeignKey(Kid, null=True, on_delete=models.SET_NULL)
+    event = models.ForeignKey(Event, null=True, on_delete=models.SET_NULL)
     is_paid = models.BooleanField
     date = models.DateField
     price = models.DecimalField(max_digits=6, decimal_places=2)
