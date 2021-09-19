@@ -60,7 +60,7 @@ class Payment(models.Model):
     is_paid = models.BooleanField
     date = models.DateField
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    coupon = models.ForeignKey(discount_coupon, null=True, on_delete=models.CASCADE)
+    coupon = models.ForeignKey(DiscountCoupons, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.event} {self.kid} {self.price} {self.is_paid}
