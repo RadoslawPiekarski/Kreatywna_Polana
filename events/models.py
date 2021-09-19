@@ -12,6 +12,7 @@ class Place(models.Model):
     street_number = models.CharField(max_length=10)
     district = models.CharField(max_length=50, default="Osiedle Przemysława")
     city = models.CharField(max_length=20, default="Poznań")
+    description = models.TextField
 
     def __str__(self):
         return f"{self.name} {self.street} {self.street_number}"
