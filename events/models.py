@@ -24,6 +24,16 @@ class Group(models.Model):
         return f"{self.name}"
 
 
+class DiscountCoupons(models.Model):
+    coupon_code = models.CharField(max_length=20)
+    discount_high = models.IntegerField(max_length=3)
+    start_date = models.DateField
+    end_date = models.DateField
+
+    def __str__(self):
+        return f"{self.start_date} / {self.end_date} {self.discount_high}"
+
+
 
 class Event(models.Model):
     title = models.CharField(max_length=50)
@@ -38,7 +48,7 @@ class Event(models.Model):
     image = models.CharField(max_length=100, null=True)
     excerpt = models.CharField(max_length=200)
     content = models.TextField
-    discount_coupons = models.ForeignKey(Discount, null=True)
+    discount_coupons = models.ManyToManyField(DiscountCoupons)
     is_active = models.BooleanField
 
     def __str__(self):
@@ -55,12 +65,4 @@ class Payment(models.Model):
     def __str__(self):
         return f"{self.event} {self.kid} {self.price} {self.is_paid}
 
-class DiscountCoupons(models.Model):
-    event = models.ManyToManyField(Event)
-    coupon_code = models.CharField(max_length=20)
-    discount_high = models.IntegerField(max_length=3)
-    start_date = models.DateField
-    end_date = models.DateField
 
-    def __str__(self):
-        return f"{self.start_date} / {self.end_date} {self.discount_high}"
