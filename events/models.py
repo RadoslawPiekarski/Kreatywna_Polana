@@ -34,7 +34,6 @@ class DiscountCoupons(models.Model):
         return f"{self.start_date} / {self.end_date} {self.discount_high}"
 
 
-
 class Event(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
@@ -44,7 +43,7 @@ class Event(models.Model):
     place = models.ForeignKey(Place, null=True, on_delete=models.SET_NULL)
     hosts = models.ManyToManyField(User)
     type = models.CharField(max_length=50)
-    group = models.ForeignKey(Group)
+    group = models.ForeignKey(Group, on_delete=models.SET_NULL)
     image = models.CharField(max_length=100, null=True)
     excerpt = models.CharField(max_length=200)
     content = models.TextField
@@ -53,6 +52,7 @@ class Event(models.Model):
 
     def __str__(self):
         return f"{self.title} {self.group} {self.date} {self.time}"
+
 
 class Payment(models.Model):
     kid = models.ForeignKey(Kid, null=False, on_delete=models.SET_NULL)
@@ -64,5 +64,3 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"{self.event} {self.kid} {self.price} {self.is_paid}"
-
-
