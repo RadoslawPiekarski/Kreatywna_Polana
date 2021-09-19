@@ -24,6 +24,14 @@ class Group(models.Model):
         return f"{self.name}"
 
 
+class Kid(models.Model):
+    kid_name = models.CharField(max_length=20)
+    birth_date = models.DateField
+
+    def __str__(self):
+        return f"{self.kid_name}"       # dodać Kid.user (parent_name)
+
+
 class DiscountCoupons(models.Model):
     coupon_code = models.CharField(max_length=20)
     discount_high = models.IntegerField(max_length=3)
@@ -40,11 +48,12 @@ class Event(models.Model):
     date = models.DateField
     time = models.TimeField
     time_span = models.TimeField
+    image = models.CharField(max_length=100, null=True)
     place = models.ForeignKey(Place, null=True, on_delete=models.SET_NULL)
     hosts = models.ManyToManyField(User)
     type = models.CharField(max_length=50)
     group = models.ForeignKey(Group, on_delete=models.SET_NULL)
-    image = models.CharField(max_length=100, null=True)
+    kids = models.ManyToManyField(Kid)
     excerpt = models.CharField(max_length=200)
     content = models.TextField
     discount_coupons = models.ManyToManyField(DiscountCoupons)
@@ -64,3 +73,5 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"{self.event} {self.kid} {self.price} {self.is_paid}"
+
+
