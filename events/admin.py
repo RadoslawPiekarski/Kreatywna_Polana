@@ -3,6 +3,7 @@ from .models import Place, User, Kid, Group, DiscountCoupons, Event, Payment
 
 # Register your models here.
 
+
 admin.site.register(User)
 admin.site.register(Kid)
 admin.site.register(Event)
