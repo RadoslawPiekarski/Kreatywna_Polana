@@ -84,7 +84,7 @@ class Event(models.Model):
     is_active = models.BooleanField
 
     def __str__(self):
-        return f"{self.title} {self.group} {self.date} {self.time}"
+        return f"{self.title} {self.group} {self.place} {self.date} {self.time}"
 
 
 class Payment(models.Model):
