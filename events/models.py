@@ -6,8 +6,8 @@ from django.db import models
 class Place(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
-    image = models.CharField(max_length=50, null=True)
-    place_map = models.CharField(max_length=400, null=True)
+    image = models.CharField(max_length=50, null=True, blank=True, )
+    place_map = models.CharField(max_length=400, null=True, blank=True)
     street = models.CharField(max_length=50)
     street_number = models.CharField(max_length=10)
     district = models.CharField(max_length=50, default="Osiedle Przemysława")
