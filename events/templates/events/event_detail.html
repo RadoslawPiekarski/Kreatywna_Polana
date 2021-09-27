@@ -17,7 +17,11 @@
             <p>Dnia {{ event.date }}</p>
             <p>Godzina: {{ event.time }}</p>
             <p>Gdzie: {{ event.place }}</p>
-            <p>Prowadzący zajęcia: {{ event.host }}</p>
+            <p>Prowadzący zajęcia:
+            {% for instructor in instructors %}
+                {{ instructor }}
+            {% endfor %}
+            </p>
         </article>
     </section>
 
