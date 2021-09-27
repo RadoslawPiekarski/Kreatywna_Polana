@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from datetime import date, time
+from .models import Event
 
 # Create your views here.
 
@@ -52,8 +53,9 @@ def get_date(event):
 
 
 def index(request):
-    sorted_events = sorted(all_events, key=get_date)
-    latest_events = sorted_events[-3:]
+    latest_events = Event.objects.all().order_by("-date")[:8]
+    # sorted_events = sorted(all_events, key=get_date)
+    # latest_events = sorted_events[-3:]
     return render(request, "events/index.html", {"events": latest_events})
 
 
@@ -66,4 +68,3 @@ def events(request):
 def event_detail(request, slug):
     identfied_event = next(event for event in all_events if event['slug'] == slug)
     return render(request, "events/event_detail.html", {"event": identfied_event})
-
