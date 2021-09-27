@@ -68,5 +68,5 @@ def events(request):
 
 def event_detail(request, slug):
     identified_event = get_object_or_404(Event, slug=slug)
-    # identfied_event = next(event for event in all_events if event['slug'] == slug)
+    # identified_event = next(event for event in all_events if event['slug'] == slug)
     return render(request, "events/event_detail.html", {"event": identified_event})
