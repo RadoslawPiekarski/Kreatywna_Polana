@@ -44,7 +44,7 @@ class User(models.Model):
         return f"{self.name} {self.surname}"
 
     def __str__(self):
-        return f"{self.full_name}"
+        return self.full_name()
 
 
 class Kid(models.Model):
