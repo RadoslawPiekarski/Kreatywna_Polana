@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from datetime import date, time
 from .models import Event
 
@@ -67,5 +67,6 @@ def events(request):
 
 
 def event_detail(request, slug):
-    identfied_event = next(event for event in all_events if event['slug'] == slug)
-    return render(request, "events/event_detail.html", {"event": identfied_event})
+    identified_event = get_object_or_404(Event, slug=slug)
+    # identfied_event = next(event for event in all_events if event['slug'] == slug)
+    return render(request, "events/event_detail.html", {"event": identified_event})
