@@ -60,6 +60,7 @@ def index(request):
 
 
 def events(request):
+    all_events = Event.objects.all().order_by("-date")
     return render(request, "events/all_events.html", {"all_events": all_events})
 
 # single event page
