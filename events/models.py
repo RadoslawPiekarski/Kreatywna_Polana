@@ -63,7 +63,7 @@ class DiscountCoupons(models.Model):
     end_date = models.DateField()
 
     def __str__(self):
-        return f"{self.start_date} / {self.end_date} {self.discount_high}"
+        return f"{self.coupon_code} {self.discount_high}"
 
 
 class Event(models.Model):
