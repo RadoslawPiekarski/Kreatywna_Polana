@@ -14,7 +14,7 @@
 
 <div class="col">
 <div class="card" style="width: 18rem;">
-  <img src="{% static "events/images/"|add:event.image %}" class="card-img-top" alt="...">
+  <img src="{% static "events/images/"|add:event.image %}" class="card-img-top" alt="{{event.title}}">
   <div class="card-body">
     <h5 class="card-title"> {{ event.title }}</h5>
     <p class="card-text">
@@ -24,7 +24,7 @@
         Grupa: <strong>{{ event.group }}</strong> <br>
         Prowadzący zajęcia: <strong>{{ event.host }}</strong> <br>
     </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="{% url "single-event" event.slug %}" class="btn btn-primary">Zobacz szczegóły</a>
   </div>
 </div>
 </div>
