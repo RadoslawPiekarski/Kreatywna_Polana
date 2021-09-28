@@ -28,3 +28,7 @@ def event_detail(request, slug):
         "event": identified_event,
         "instructors": identified_event.instructor.all()
     })
+
+
+def login(request):
+    return render(request, "events/login_form.html")
