@@ -7,6 +7,7 @@ from .models import Place, User, Kid, Group, DiscountCoupons, Event, Payment
 class EventAdmin(admin.ModelAdmin):
     list_filter = ("place", "group",)
     list_display = ("title", "date", "place", "group")
+    prepopulated_fields = {"slug": ["title"]}
 
 
 admin.site.register(User)
