@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from datetime import date, time
 from .models import Event
 
 # Create your views here.
@@ -28,4 +27,7 @@ def event_detail(request, slug):
 
 
 def login(request):
+    if request.method == 'POST':
+        entered_login = request.POST['username']
+        entered_password = request.POST['password']
     return render(request, "events/login_form.html")
