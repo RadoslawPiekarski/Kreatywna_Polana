@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Event
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -30,4 +31,5 @@ def login(request):
     if request.method == 'POST':
         entered_login = request.POST['username']
         entered_password = request.POST['password']
+        return HttpResponseRedirect("/events/")
     return render(request, "events/login_form.html")
