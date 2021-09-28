@@ -4,53 +4,6 @@ from .models import Event
 
 # Create your views here.
 
-# mocking data:
-all_events = [
-    {
-        "slug": "kreatywne-zabawy",
-        "image": "zajecia_sensoryczne.jpg",
-        "host": "Monika",
-        "date": date(2021, 8, 29),
-        "time": time(14, 00),
-        "place": "Olszak",
-        "group": "Misie",
-        "title": "Kreatywne Zabawy",
-        "excerpt": "Tu jest zajawka. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in.",
-        "content": "Tu jest content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in. Sed vulputate, orci id varius rutrum, eros nunc mollis nunc, vitae ornare sem orci sed nisi.",
-        "is_active": True,
-    },
-    {
-        "slug": "tor-przeszkod",
-        "image": "zajecia_sensoryczne_2.jpg",
-        "host": "Radek",
-        "date": date(2023, 8, 31),
-        "time": time(16, 30),
-        "place": "Osiedle Przemysława",
-        "group": "Skrzaty",
-        "title": "Tor przeszkód",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in.",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in. Sed vulputate, orci id varius rutrum, eros nunc mollis nunc, vitae ornare sem orci sed nisi.",
-        "is_active": True,
-    },
-    {
-        "slug": "zapach_jesieni",
-        "image": "zapach_jesieni.jpg",
-        "host": "Monika",
-        "date": date(2021, 8, 29),
-        "time": time(11, 00),
-        "place": "Olszak",
-        "group": "Skrzaty",
-        "title": "Zapach jesieni",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in.",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec ligula magna. Praesent aliquet rhoncus massa, blandit rhoncus mauris malesuada in. Sed vulputate, orci id varius rutrum, eros nunc mollis nunc, vitae ornare sem orci sed nisi.",
-        "is_active": True,
-    },
-]
-
-
-def get_date(event):
-    return event['date']
-
 
 def index(request):
     latest_events = Event.objects.all().order_by("-date")[:8]
