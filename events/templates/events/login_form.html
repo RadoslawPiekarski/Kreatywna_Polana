@@ -12,6 +12,7 @@
 {% block content %}
     <main>
         <form method="POST">
+            {% csrf_token %}
             <label for="username">Imie</label>
             <input id="username" name="username" type="text"><br>
 
