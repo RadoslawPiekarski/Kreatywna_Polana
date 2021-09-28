@@ -11,6 +11,18 @@
 
 {% block content %}
     <main>
-        {{ event.content|linebreaks }}
+        <form method="POST">
+            <label for="username">Imie</label>
+            <input id="username" name="username" type="text"><br>
+
+            <label for="password">Haslo</label>
+            <input id="password" name="password" type="password"><br>
+
+            <label for=""></label>
+            <input type="">
+
+            <button type="submit">Wyslij</button>
+
+        </form>
     </main>
 {% endblock %}
