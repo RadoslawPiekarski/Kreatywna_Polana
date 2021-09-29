@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Event
 from django.http import HttpResponseRedirect
+from .forms import LoginForm
 
 # Create your views here.
 
