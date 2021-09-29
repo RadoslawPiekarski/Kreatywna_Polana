@@ -59,11 +59,14 @@ def create_user(request):
 
             )
             user.save()
-            # print(user)
-            # kid = Kid(
-            #     kid_name=form.cleaned_data["kid_name"],
-            #     birth_date=form.cleaned_data["birth_date"]
-            # )
+
+            kid = Kid(
+                kid_name=form.cleaned_data["kid_name"],
+                birth_date=form.cleaned_data["birth_date"],
+                parent=user
+            )
+            kid.save()
+
             return HttpResponseRedirect("/events/")
 
     return render(request, "events/create_user.html", {
