@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "events/css/forms.css" %}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+
+            <button type="submit">Wyslij</button>
+
+        </form>
+    </main>
+{% endblock %}
