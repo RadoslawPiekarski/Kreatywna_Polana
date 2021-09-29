@@ -29,8 +29,12 @@ def event_detail(request, slug):
 
 
 def login(request):
-    if request.method == 'POST':
-        entered_login = request.POST['username']
-        entered_password = request.POST['password']
-        return HttpResponseRedirect("/events/")
-    return render(request, "events/login_form.html")
+    # if request.method == 'POST':
+    #     entered_login = request.POST['username']
+    #     entered_password = request.POST['password']
+    #     return HttpResponseRedirect("/events/")
+    form = LoginForm()
+
+    return render(request, "events/login_form.html",{
+        "form":form
+    })
