@@ -1,4 +1,5 @@
 from django.db import models
+from .forms import LoginForm
 
 # Create your models here.
 
