@@ -59,6 +59,7 @@ def create_user(request):
 
             )
             user.save()
+            # print(user)
             # kid = Kid(
             #     kid_name=form.cleaned_data["kid_name"],
             #     birth_date=form.cleaned_data["birth_date"]

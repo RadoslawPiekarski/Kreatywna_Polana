@@ -37,8 +37,8 @@ class User(models.Model):
     surname = models.CharField(max_length=50)
     email = models.EmailField(max_length=50, unique=True)
     phone_number = models.CharField(max_length=20)
-    description = models.TextField(null=True, blank=True)
-    role = models.CharField(max_length=1, choices=ROLES, default="U")
+    description = models.TextField(blank=True)
+    role = models.CharField(max_length=1, choices=ROLES, default='U')
 
     def full_name(self):
         return f"{self.name} {self.surname}"

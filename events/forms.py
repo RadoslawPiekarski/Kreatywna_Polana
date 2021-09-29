@@ -14,6 +14,7 @@ class CreateUserForm(forms.Form):
     email = forms.EmailField(max_length=50, label="E-mail")
     phone_number = forms.CharField(max_length=20, label="Numer telefonu")
 
+
     # kid
 
     kid_name = forms.CharField(max_length=20, label="Imię uczestnika zajęć")
