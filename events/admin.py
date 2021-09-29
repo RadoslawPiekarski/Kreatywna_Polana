@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Place, User, Kid, Group, DiscountCoupons, Event, Payment
+from .models import Place, UserProfile, Kid, Group, DiscountCoupons, Event, Payment
 
 # Register your models here.
 
@@ -10,7 +10,7 @@ class EventAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ["title"]}
 
 
-admin.site.register(User)
+admin.site.register(UserProfile)
 admin.site.register(Kid)
 admin.site.register(Event, EventAdmin)
 admin.site.register(DiscountCoupons)

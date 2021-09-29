@@ -25,23 +25,19 @@ class Group(models.Model):
         return f"{self.name}"
 
 
-class User(models.Model):
+class UserProfile(models.Model):
     ROLES = (
         ('A', 'Admin'),
         ('U', 'User'),
         ('I', 'Instructor'),
     )
-    login = models.CharField(max_length=20, unique=True)
-    password = models.CharField(max_length=20)
-    name = models.CharField(max_length=20)
-    surname = models.CharField(max_length=50)
-    email = models.EmailField(max_length=50, unique=True)
+
     phone_number = models.CharField(max_length=20)
     description = models.TextField(blank=True)
     role = models.CharField(max_length=1, choices=ROLES, default='U')
 
     def full_name(self):
-        return f"{self.name} {self.surname}"
+        return f"{UserProfile}"
 
     def __str__(self):
         return self.full_name()
@@ -50,7 +46,7 @@ class User(models.Model):
 class Kid(models.Model):
     kid_name = models.CharField(max_length=20)
     birth_date = models.DateField()
-    parent = models.ForeignKey(User, on_delete=models.CASCADE)
+    parent = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.kid_name}"       # dodać Kid.user (parent_name)
@@ -74,7 +70,7 @@ class Event(models.Model):
     time_span = models.TimeField()
     image = models.CharField(max_length=100, null=True)
     place = models.ForeignKey(Place, null=True, on_delete=models.SET_NULL)
-    instructor = models.ManyToManyField(User)
+    instructor = models.ManyToManyField(UserProfile)
     type = models.CharField(max_length=50)
     group = models.ForeignKey(Group, null=True, on_delete=models.SET_NULL)
     kids = models.ManyToManyField(Kid)

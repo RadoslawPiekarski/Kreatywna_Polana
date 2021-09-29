@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Event, User, Kid
+from .models import Event, UserProfile, Kid
 from django.http import HttpResponseRedirect
 from .forms import LoginForm, CreateUserForm
 
