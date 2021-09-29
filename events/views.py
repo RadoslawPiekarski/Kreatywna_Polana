@@ -29,12 +29,14 @@ def event_detail(request, slug):
 
 
 def login(request):
-    # if request.method == 'POST':
-    #     entered_login = request.POST['username']
-    #     entered_password = request.POST['password']
-    #     return HttpResponseRedirect("/events/")
+    # if Post method validate data; if ok redirect to all_events page
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            return HttpResponseRedirect("/events/")
+    # if not create and render form
     form = LoginForm()
-
-    return render(request, "events/login_form.html",{
-        "form":form
+    return render(request, "events/login_form.html", {
+        "form": form
     })
