@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Event
+from .models import Event, User, Kid
 from django.http import HttpResponseRedirect
 from .forms import LoginForm, CreateUserForm
 
@@ -47,8 +47,21 @@ def create_user(request):
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
+
         if form.is_valid():
-            print(form.cleaned_data)
+            user = User(
+                login=form.cleaned_data["user_name"],
+                password=form.cleaned_data["password"],
+                name=form.cleaned_data["name"],
+                surname=form.cleaned_data["surname"],
+                email=form.cleaned_data["email"],
+                phone_number=form.cleaned_data["phone_number"]
+            )
+            user.save()
+            # kid = Kid(
+            #     kid_name=form.cleaned_data["kid_name"],
+            #     birth_date=form.cleaned_data["birth_date"]
+            # )
             return HttpResponseRedirect("/events/")
 
     return render(request, "events/create_user.html", {
