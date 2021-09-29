@@ -50,12 +50,13 @@ def create_user(request):
 
         if form.is_valid():
             user = User(
-                login=form.cleaned_data["user_name"],
+                login=form.cleaned_data["login"],
                 password=form.cleaned_data["password"],
                 name=form.cleaned_data["name"],
                 surname=form.cleaned_data["surname"],
                 email=form.cleaned_data["email"],
                 phone_number=form.cleaned_data["phone_number"]
+
             )
             user.save()
             # kid = Kid(
