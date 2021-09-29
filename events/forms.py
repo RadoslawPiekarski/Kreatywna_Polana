@@ -17,7 +17,7 @@ class CreateUserForm(forms.Form):
     # kid
 
     kid_name = forms.CharField(max_length=20, label="Imię uczestnika zajęć")
-    birth_date = forms.DateField(label="Data urodzenia uczestnika zajęć")
+    birth_date = forms.DateField(label="Data urodzenia uczestnika zajęć (yyyy-mm-dd)")
 
 
 # required=False - pole niewymagane
