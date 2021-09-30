@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 # Create your models here.
 
@@ -47,15 +45,14 @@ class UserProfile(models.Model):
         return self.full_name()
 
 
-
-
 class Kid(models.Model):
     kid_name = models.CharField(max_length=20)
     birth_date = models.DateField()
     parent = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.kid_name} Rodzic: {self.parent.first_name} {self.parent.last_name}"       
+        return f"{self.kid_name}"
+        # return f"{self.kid_name} Rodzic: {self.parent.first_name} {self.parent.last_name}"
 
 
 class DiscountCoupons(models.Model):
@@ -76,7 +73,7 @@ class Event(models.Model):
     time_span = models.TimeField()
     image = models.CharField(max_length=100, null=True)
     place = models.ForeignKey(Place, null=True, on_delete=models.SET_NULL)
-    instructor = models.ManyToManyField(UserProfile)
+    instructor = models.ManyToManyField(User)
     type = models.CharField(max_length=50)
     group = models.ForeignKey(Group, null=True, on_delete=models.SET_NULL)
     kids = models.ManyToManyField(Kid)
