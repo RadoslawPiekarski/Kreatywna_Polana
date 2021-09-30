@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Event, UserProfile, Kid
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .forms import LoginForm, CreateUserForm
 
@@ -50,15 +51,19 @@ def create_user(request):
 
         if form.is_valid():
             user = User(
-                login=form.cleaned_data["login"],
+                username=form.cleaned_data["username"],
                 password=form.cleaned_data["password"],
-                name=form.cleaned_data["name"],
-                surname=form.cleaned_data["surname"],
+                first_name=form.cleaned_data["firstname"],
+                last_name=form.cleaned_data["lastname"],
                 email=form.cleaned_data["email"],
-                phone_number=form.cleaned_data["phone_number"]
-
             )
             user.save()
+
+            user_profile = UserProfile(
+                phone_number=form.cleaned_data['phone_number'],
+                user=user
+            )
+            user_profile.save()
 
             kid = Kid(
                 kid_name=form.cleaned_data["kid_name"],

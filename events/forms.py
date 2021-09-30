@@ -7,10 +7,10 @@ class LoginForm(forms.Form):
 
 
 class CreateUserForm(forms.Form):
-    login = forms.CharField(max_length=20, label="Login")
+    username = forms.CharField(max_length=20, label="Login")
     password = forms.CharField(max_length=20, label="Hasło")
-    name = forms.CharField(max_length=20, label="Imię")
-    surname = forms.CharField(max_length=50, label="Nazwisko")
+    firstname = forms.CharField(max_length=20, label="Imię")
+    lastname = forms.CharField(max_length=50, label="Nazwisko")
     email = forms.EmailField(max_length=50, label="E-mail")
     phone_number = forms.CharField(max_length=20, label="Numer telefonu")
 

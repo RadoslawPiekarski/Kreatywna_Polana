@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 
@@ -32,24 +35,27 @@ class UserProfile(models.Model):
         ('I', 'Instructor'),
     )
 
-    phone_number = models.CharField(max_length=20)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='user_profile')
+    phone_number = models.CharField(max_length=20, null=True, blank=True)
     description = models.TextField(blank=True)
     role = models.CharField(max_length=1, choices=ROLES, default='U')
 
     def full_name(self):
-        return f"{UserProfile}"
+        return f"{self.user.first_name} {self.user.last_name}"
 
     def __str__(self):
         return self.full_name()
 
 
+
+
 class Kid(models.Model):
     kid_name = models.CharField(max_length=20)
     birth_date = models.DateField()
-    parent = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    parent = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.kid_name}"       # dodać Kid.user (parent_name)
+        return f"{self.kid_name} Rodzic: {self.parent.first_name} {self.parent.last_name}"       
 
 
 class DiscountCoupons(models.Model):
