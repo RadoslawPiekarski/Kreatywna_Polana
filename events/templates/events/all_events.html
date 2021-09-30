@@ -12,17 +12,21 @@
 
 {% block content %}
 
-    <section id="all-events">
+    <section>
         <h2>Nadchodzące wydarzenia:</h2>
+        <div class="container">
+            <div class="row">
 
-        <ul>
 
             {% for event in all_events %}
+
                 {% include "events/includes/event.html" %}
+
             {% endfor %}
 
 
-        </ul>
 
+            </div>
+        </div>
     </section>
 {% endblock %}
