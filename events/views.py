@@ -8,11 +8,13 @@ from .forms import LoginForm, CreateUserForm
 
 
 def index(request):
+    """Main page view. Passing last new 8 events to the template."""
     latest_events = Event.objects.all().order_by("-date")[:8]
     return render(request, "events/index.html", {"events": latest_events})
 
 
 def events(request):
+    """Generating page showing all events, ordered by newest. Passing all events data."""
     all_events = Event.objects.all().order_by("-date")
     return render(request, "events/all_events.html", {
         "all_events": all_events
@@ -22,6 +24,8 @@ def events(request):
 
 
 def event_detail(request, slug):
+    """Generating single event page. Page allows to sign up for event for user or user kids.
+    Passing given event data, event instructors and logged user kids."""
     identified_event = get_object_or_404(Event, slug=slug)
     current_user = request.user
     return render(request, "events/event_detail.html", {
@@ -30,14 +34,18 @@ def event_detail(request, slug):
         "kids": Kid.objects.filter(parent=current_user)
     })
 
+# TODO Change login view for class view
+
 
 def login(request):
+    """Login page. If GER method, generate a form; if POST method, take data form the form, validate and
+    save them to the database"""
     form = LoginForm()
-    # if Post method validate data; if ok redirect to all_events page
+    # if Post method validate data: if ok redirect to all_events page
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
+            # print(form.cleaned_data)
             return HttpResponseRedirect("/events/")
 
     # if GET create and render form
@@ -47,6 +55,7 @@ def login(request):
 
 
 def create_user(request):
+    """Create new user page. Generate form, validate and save the new user data to database"""
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
