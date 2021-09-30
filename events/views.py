@@ -23,9 +23,11 @@ def events(request):
 
 def event_detail(request, slug):
     identified_event = get_object_or_404(Event, slug=slug)
+    current_user = request.user
     return render(request, "events/event_detail.html", {
         "event": identified_event,
-        "instructors": identified_event.instructor.all()
+        "instructors": identified_event.instructor.all(),
+        "kids": Kid.objects.filter(parent=current_user)
     })
 
 
