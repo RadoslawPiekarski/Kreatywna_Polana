@@ -22,10 +22,36 @@
                 {{ instructor }}
             {% endfor %}
             </p>
+
+
+
         </article>
     </section>
 
     <main>
         {{ event.content|linebreaks }}
+    {#bootstrap toogle collapse#}
+            <p>
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                {% if user.is_authenticated %}
+                  Zapisz na zajęcia
+                {% else %}
+                  Zaloguj się
+                {% endif %}
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                 {{ user.first_name }} naciśnij przycisk aby zapisać na zajęcia:
+                 <ul>
+                  {% for kid in kids %}
+
+                  <li>{{ kid.kid_name }}</li>
+                  {% endfor %}
+                 </ul>
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              </div>
+            </div>
+            {#end toogle collapse#}
     </main>
 {% endblock %}
