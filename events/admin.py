@@ -10,8 +10,11 @@ class EventAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ["title"]}
 
 
+class KidAdmin(admin.ModelAdmin):
+    list_display = ("kid_name", "parent")
+
 admin.site.register(UserProfile)
-admin.site.register(Kid)
+admin.site.register(Kid, KidAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(DiscountCoupons)
 admin.site.register(Place)
