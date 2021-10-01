@@ -8,15 +8,28 @@ from django.contrib.auth import get_user_model
 
 from django.contrib.auth.models import User
 from django.test import Client
+from events.models import Event, UserProfile
+
+
+# TestOK
+def test_ok():
+    assert 2+2 == 4
+
+
+# TestFail
+def test_fail():
+    assert False
 
 
 # HomePageView
+@pytest.mark.django_db
 def test_index(client):
     response = client.get("")
     assert response.status_code == 200
 
 
 # AllEventsView
+@pytest.mark.django_db
 def test_events(client):
     response = client.get('/events/')
     assert response.status_code == 200
