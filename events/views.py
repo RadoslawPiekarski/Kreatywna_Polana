@@ -88,3 +88,12 @@ def create_user(request):
     return render(request, "events/create_user.html", {
         "form": form
     })
+
+
+# Proof on concept page for logged in users
+
+def parents_info_page(request):
+    if request.user.is_authenticated:
+        return render(request, "events/parents_info.html")
+    else:
+        return HttpResponseRedirect("")
