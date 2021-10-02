@@ -21,15 +21,22 @@ def test_fail():
     assert False
 
 
-# HomePageView
+# HomePageView test
 @pytest.mark.django_db
 def test_index(client):
     response = client.get("")
     assert response.status_code == 200
 
 
-# AllEventsView
+# AllEventsView test
 @pytest.mark.django_db
 def test_events(client):
     response = client.get('/events/')
+    assert response.status_code == 200
+
+
+# SingleEvent test
+@pytest.mark.django_db
+def test_event_detail(client):
+    response = client.get.get('/events/kreatywne-zabawy')
     assert response.status_code == 200
