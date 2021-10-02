@@ -13,7 +13,7 @@ from events.models import Event, UserProfile
 
 # TestOK
 def test_ok():
-    assert 2+2 == 4
+    assert 2 + 2 == 4
 
 
 # TestFail
@@ -35,7 +35,7 @@ def test_events(client):
     assert response.status_code == 200
 
 
-#TODO test nie przechodzi (slug?)
+# TODO test nie przechodzi (slug?)
 # SingleEvent test
 @pytest.mark.django_db
 def test_event_detail(client):
@@ -49,12 +49,12 @@ def test_login(client):
     response = client.get('/login/')
     assert response.status_code == 200
     user = User.objects.create_user(username="test_user", password="test_password")
-    response = client.post("/login/",
+    response = client.post(
+        "/login/",
         form={
             "username": "test_user",
             "password": "test_password",
-        },
-    )
+        },)
     assert response.status_code == 200
     assert User.objects.count() == 1
 
@@ -64,4 +64,3 @@ def test_login(client):
 def test_create_user(client):
     response = client.get('/create_user/')
     assert response.status_code == 200
-
