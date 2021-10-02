@@ -38,7 +38,7 @@ def event_detail(request, slug):
 
 
 def login(request):
-    """Login page. If GER method, generate a form; if POST method, take data form the form, validate and
+    """Login page. If GET method, generate a form; if POST method, take data form the form, validate and
     save them to the database"""
     form = LoginForm()
     # if Post method validate data: if ok redirect to all_events page
