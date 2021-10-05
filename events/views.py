@@ -55,22 +55,6 @@ class Login(View):
             # form.save()
             return HttpResponseRedirect("/events/")
 
-# def login(request):
-#     """Login page. If GET method, generate a form; if POST method, take data form the form, validate and
-#     save them to the database"""
-#     form = LoginForm()
-#     # if Post method validate data: if ok redirect to all_events page
-#     if request.method == 'POST':
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             # print(form.cleaned_data)
-#             return HttpResponseRedirect("/events/")
-#
-#     # if GET create and render form
-#     return render(request, "events/login_form.html", {
-#         "form": form
-#     })
-
 
 # TODO Change create_user view for class view
 def create_user(request):
