@@ -50,6 +50,8 @@ class Login(View):
     def post(self, request):
         form = LoginForm(request.POST)
         if form.is_valid():
+            # TODO Add login and password checkin
+            # TODO link login user if validated
             # form.save()
             return HttpResponseRedirect("/events/")
 
