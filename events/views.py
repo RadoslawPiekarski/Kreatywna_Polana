@@ -9,7 +9,7 @@ from .forms import LoginForm, CreateUserForm
 
 def index(request):
     """Main page view. Passing last new 8 events to the template."""
-    latest_events = Event.objects.all().order_by("-date")[:8]
+    latest_events = Event.objects.order_by("-date")[:8]
     return render(request, "events/index.html", {"events": latest_events})
 
 
@@ -34,9 +34,8 @@ def event_detail(request, slug):
         "kids": Kid.objects.filter(parent=current_user)
     })
 
+
 # TODO Change login view for class view
-
-
 def login(request):
     """Login page. If GET method, generate a form; if POST method, take data form the form, validate and
     save them to the database"""
@@ -54,6 +53,7 @@ def login(request):
     })
 
 
+# TODO Change create_user view for class view
 def create_user(request):
     """Create new user page. Generate form, validate and save the new user data to database"""
     form = CreateUserForm()
@@ -91,7 +91,6 @@ def create_user(request):
 
 
 # Proof on concept page for logged in users
-
 def parents_info_page(request):
     if request.user.is_authenticated:
         return render(request, "events/parents_info.html")
