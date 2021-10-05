@@ -29,11 +29,19 @@ def event_detail(request, slug):
     Passing given event data, event instructors and logged user kids."""
     identified_event = get_object_or_404(Event, slug=slug)
     current_user = request.user
-    return render(request, "events/event_detail.html", {
-        "event": identified_event,
-        "instructors": identified_event.instructor.all(),
-        "kids": Kid.objects.filter(parent=current_user)
-    })
+    if current_user.is_authenticated:
+        return render(request, "events/event_detail.html", {
+                "event": identified_event,
+                "instructors": identified_event.instructor.all(),
+                "kids": Kid.objects.filter(parent=current_user)
+        })
+
+    else:
+        return render(request, "events/event_detail.html", {
+            "event": identified_event,
+            "instructors": identified_event.instructor.all(),
+
+        })
 
 
 # TODO Change login view for class view
