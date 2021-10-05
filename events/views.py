@@ -3,6 +3,7 @@ from .models import Event, UserProfile, Kid
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .forms import LoginForm, CreateUserForm
+from django.views import View
 
 # Create your views here.
 
@@ -36,21 +37,37 @@ def event_detail(request, slug):
 
 
 # TODO Change login view for class view
-def login(request):
+class Login(View):
     """Login page. If GET method, generate a form; if POST method, take data form the form, validate and
     save them to the database"""
-    form = LoginForm()
-    # if Post method validate data: if ok redirect to all_events page
-    if request.method == 'POST':
+
+    def get(self, request):
+        form = LoginForm()
+        return render(request, "events/login_form.html", {
+            "form": form
+        })
+
+    def post(self, request):
         form = LoginForm(request.POST)
         if form.is_valid():
-            # print(form.cleaned_data)
+            # form.save()
             return HttpResponseRedirect("/events/")
 
-    # if GET create and render form
-    return render(request, "events/login_form.html", {
-        "form": form
-    })
+# def login(request):
+#     """Login page. If GET method, generate a form; if POST method, take data form the form, validate and
+#     save them to the database"""
+#     form = LoginForm()
+#     # if Post method validate data: if ok redirect to all_events page
+#     if request.method == 'POST':
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             # print(form.cleaned_data)
+#             return HttpResponseRedirect("/events/")
+#
+#     # if GET create and render form
+#     return render(request, "events/login_form.html", {
+#         "form": form
+#     })
 
 
 # TODO Change create_user view for class view
