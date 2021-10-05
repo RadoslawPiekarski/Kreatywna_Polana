@@ -51,16 +51,17 @@ def test_login(client):
     user = User.objects.create_user(username="test_user", password="test_password")
     response = client.post(
         "/login/",
-        form={
+        data={
             "username": "test_user",
             "password": "test_password",
         },)
     assert response.status_code == 200
-    assert User.objects.count() == 1
-
+    # assert User.objects.count() == 1
+    assert response['context']['user'].is_authenticated
+    assert response['context']['user'] == user
 
 # CreateUser test
 @pytest.mark.django_db
-def test_create_user(client):
+def test_create_user_get(client):
     response = client.get('/create_user/')
     assert response.status_code == 200
