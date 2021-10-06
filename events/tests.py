@@ -63,5 +63,5 @@ def test_login(client):
 # CreateUser test
 @pytest.mark.django_db
 def test_create_user_get(client):
-    response = client.get('/create_user/')
+    response = client.get('/create-user/')
     assert response.status_code == 200
