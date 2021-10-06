@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from .forms import LoginForm, CreateUserForm
 from django.views import View
 
+
 # Create your views here.
 
 
@@ -21,6 +22,7 @@ def events(request):
         "all_events": all_events
     })
 
+
 # single event page
 
 
@@ -31,9 +33,9 @@ def event_detail(request, slug):
     current_user = request.user
     if current_user.is_authenticated:
         return render(request, "events/event_detail.html", {
-                "event": identified_event,
-                "instructors": identified_event.instructor.all(),
-                "kids": Kid.objects.filter(parent=current_user)
+            "event": identified_event,
+            "instructors": identified_event.instructor.all(),
+            "kids": Kid.objects.filter(parent=current_user)
         })
 
     else:
@@ -44,7 +46,6 @@ def event_detail(request, slug):
         })
 
 
-# TODO Change login view for class view
 class Login(View):
     """Login page. If GET method, generate a form; if POST method, take data form the form, validate and
     save them to the database"""
@@ -65,12 +66,17 @@ class Login(View):
 
 
 # TODO Change create_user view for class view
-def create_user(request):
+class CreateUser(View):
     """Create new user page. Generate form, validate and save the new user data to database"""
-    form = CreateUserForm()
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
 
+    def get(self, request):
+        form = CreateUserForm()
+        return render(request, "events/create_user.html", {
+            "form": form
+        })
+
+    def post(self, request):
+        form = CreateUserForm(request.POST)
         if form.is_valid():
             user = User(
                 username=form.cleaned_data["username"],
@@ -96,9 +102,41 @@ def create_user(request):
 
             return HttpResponseRedirect("/events/")
 
-    return render(request, "events/create_user.html", {
-        "form": form
-    })
+
+# def create_user(request):
+#     """Create new user page. Generate form, validate and save the new user data to database"""
+#     form = CreateUserForm()
+#     if request.method == 'POST':
+#         form = CreateUserForm(request.POST)
+#
+#         if form.is_valid():
+#             user = User(
+#                 username=form.cleaned_data["username"],
+#                 password=form.cleaned_data["password"],
+#                 first_name=form.cleaned_data["firstname"],
+#                 last_name=form.cleaned_data["lastname"],
+#                 email=form.cleaned_data["email"],
+#             )
+#             user.save()
+#
+#             user_profile = UserProfile(
+#                 phone_number=form.cleaned_data['phone_number'],
+#                 user=user
+#             )
+#             user_profile.save()
+#
+#             kid = Kid(
+#                 kid_name=form.cleaned_data["kid_name"],
+#                 birth_date=form.cleaned_data["birth_date"],
+#                 parent=user
+#             )
+#             kid.save()
+#
+#             return HttpResponseRedirect("/events/")
+#
+#     return render(request, "events/create_user.html", {
+#         "form": form
+#     })
 
 
 # Proof on concept page for logged in users
