@@ -6,7 +6,6 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=20, widget=forms.PasswordInput, label="Hasło")
 
 
-# TODO add password2 field and validation password=password2
 # TODO crypt password before sent
 class CreateUserForm(forms.Form):
     username = forms.CharField(max_length=20, label="Login")
