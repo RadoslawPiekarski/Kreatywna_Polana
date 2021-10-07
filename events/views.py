@@ -24,8 +24,6 @@ def events(request):
 
 
 # single event page
-
-
 def event_detail(request, slug):
     """Generating single event page. Page allows to sign up for event for user or user kids.
     Passing given event data, event instructors and logged user kids."""
@@ -65,7 +63,6 @@ class Login(View):
             return HttpResponseRedirect("/events/")
 
 
-# TODO Change create_user view for class view
 class CreateUser(View):
     """Create new user page. Generate form, validate and save the new user data to database"""
 
