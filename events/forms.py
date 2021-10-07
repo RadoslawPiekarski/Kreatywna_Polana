@@ -11,6 +11,7 @@ class LoginForm(forms.Form):
 class CreateUserForm(forms.Form):
     username = forms.CharField(max_length=20, label="Login")
     password = forms.CharField(max_length=20, label="Hasło", widget=forms.PasswordInput)
+    password2 = forms.CharField(max_length=20, label ="Hasło2", widget=forms.PasswordInput)
     firstname = forms.CharField(max_length=20, label="Imię")
     lastname = forms.CharField(max_length=50, label="Nazwisko")
     email = forms.EmailField(max_length=50, label="E-mail")
