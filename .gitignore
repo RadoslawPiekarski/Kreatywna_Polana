@@ -249,3 +249,4 @@ modules.xml
 # Sonarlint plugin
 .idea/sonarlint
 /events/migrations/*
+/my_notes.py
