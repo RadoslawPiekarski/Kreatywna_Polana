@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .forms import LoginForm, CreateUserForm
 from django.views import View
+from django.views.generic import ListView
 
 
 # Create your views here.
@@ -15,12 +16,19 @@ def index(request):
     return render(request, "events/index.html", {"events": latest_events})
 
 
-def events(request):
+class Events(ListView):
     """Generating page showing all events, ordered by newest. Passing all events data."""
-    all_events = Event.objects.all().order_by("-date")
-    return render(request, "events/all_events.html", {
-        "all_events": all_events
-    })
+    template_name = "events/all_events.html"
+    model = Event
+    context_object_name = "all_events"
+
+#  function (old) version of Events view
+# def events(request):
+#     """Generating page showing all events, ordered by newest. Passing all events data."""
+#     all_events = Event.objects.all().order_by("-date")
+#     return render(request, "events/all_events.html", {
+#         "all_events": all_events
+#     })
 
 
 # single event page
@@ -98,42 +106,6 @@ class CreateUser(View):
             kid.save()
 
             return HttpResponseRedirect("/events/")
-
-
-# def create_user(request):
-#     """Create new user page. Generate form, validate and save the new user data to database"""
-#     form = CreateUserForm()
-#     if request.method == 'POST':
-#         form = CreateUserForm(request.POST)
-#
-#         if form.is_valid():
-#             user = User(
-#                 username=form.cleaned_data["username"],
-#                 password=form.cleaned_data["password"],
-#                 first_name=form.cleaned_data["firstname"],
-#                 last_name=form.cleaned_data["lastname"],
-#                 email=form.cleaned_data["email"],
-#             )
-#             user.save()
-#
-#             user_profile = UserProfile(
-#                 phone_number=form.cleaned_data['phone_number'],
-#                 user=user
-#             )
-#             user_profile.save()
-#
-#             kid = Kid(
-#                 kid_name=form.cleaned_data["kid_name"],
-#                 birth_date=form.cleaned_data["birth_date"],
-#                 parent=user
-#             )
-#             kid.save()
-#
-#             return HttpResponseRedirect("/events/")
-#
-#     return render(request, "events/create_user.html", {
-#         "form": form
-#     })
 
 
 # Proof on concept page for logged in users
