@@ -8,4 +8,5 @@ urlpatterns = [
     path("login/", views.Login.as_view(), name="login"),
     path("create-user/", views.CreateUser.as_view(), name="create-user"),
     path("parents_info/", views.parents_info_page, name="parents-info"),
+    path("events/add_event", views.Events.as_view(), name="add-event")
 ]
