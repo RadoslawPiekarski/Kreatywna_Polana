@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from .models import Event, UserProfile, Kid
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-from .forms import LoginForm, CreateUserForm
+from .forms import LoginForm, CreateUserForm, EventForm
 from django.views import View
 from django.views.generic import ListView
-
+from django.views.generic.edit import FormView
 
 # Create your views here.
 
@@ -51,6 +51,15 @@ def event_detail(request, slug):
 
         })
 
+
+class AddEvent(FormView):
+    form_class = EventForm
+    template_name = "events/create_user.html"
+    success_url = "/events/"
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 class Login(View):
     """Login page. If GET method, generate a form; if POST method, take data form the form, validate and
