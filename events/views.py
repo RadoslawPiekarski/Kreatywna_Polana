@@ -52,14 +52,19 @@ def event_detail(request, slug):
         })
 
 
-class AddEvent(FormView):
-    form_class = EventForm
-    template_name = "events/create_user.html"
-    success_url = "/events/"
+class AddEvent(View):
+    def get(self, request):
+        form = EventForm()
+        return render(request, "events/create_user.html", {
+            "form": form
+        })
 
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
+    def post(self, request):
+        form = EventForm(request.POST)
+        if request.user.is_authenticated:
+            form.save()
+        return HttpResponeRedirect("/events/")
+
 
 class Login(View):
     """Login page. If GET method, generate a form; if POST method, take data form the form, validate and
