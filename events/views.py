@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Event, UserProfile, Kid
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -54,16 +54,18 @@ def event_detail(request, slug):
 
 class AddEvent(View):
     def get(self, request):
-        form = EventForm()
-        return render(request, "events/create_user.html", {
-            "form": form
-        })
+        if request.user.is_authenticated:
+            form = EventForm()
+            return render(request, "events/create_user.html", {
+                "form": form
+            })
+        return redirect('login')
 
     def post(self, request):
         form = EventForm(request.POST)
         if request.user.is_authenticated:
             form.save()
-        return HttpResponeRedirect("/events/")
+        return HttpResponseRedirect("/events/")
 
 
 class Login(View):
