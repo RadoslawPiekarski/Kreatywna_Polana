@@ -13,6 +13,7 @@ class EventAdmin(admin.ModelAdmin):
 class KidAdmin(admin.ModelAdmin):
     list_display = ("kid_name", "parent")
 
+
 admin.site.register(UserProfile)
 admin.site.register(Kid, KidAdmin)
 admin.site.register(Event, EventAdmin)
